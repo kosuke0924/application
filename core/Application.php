@@ -8,14 +8,14 @@ abstract class Application
     protected $session;
     protected $db_manager;
 
-    public function __construce()
+    public function __construct($debug = false)
     {
         $this->setDebugMode($debug);
         $this->initialize();
         $this->configure();
     }
 
-    protected function setDebugMode()
+    protected function setDebugMode($debug)
     {
         if ($debug) {
             $this->debug = true;
@@ -40,7 +40,7 @@ abstract class Application
     {
     }
 
-    abstract public function getRoodDir();
+    abstract public function getRootDir();
 
     abstract protected function registerRoutes();
 
@@ -146,7 +146,7 @@ abstract class Application
         return new $controller_class($this);
     }
 
-    protected function render404NotPage
+    protected function render404NotPage($e)
     {
         $this->response->setStatusCode(404, 'Not Found');
         $message = $this->isDebugMode() ? $e->getMessage() : 'Page not found.';

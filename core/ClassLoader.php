@@ -5,14 +5,14 @@ class ClassLoader
 
     protected $dirs;
 
-    public function()
+    public function register()
     {
-        sql_autoload_register(array($this, 'loadClass'));
+        spl_autoload_register(array($this, 'loadClass'));
     }
 
     public function registerDir($dir)
     {
-        $this->dirs[] = $dir
+        $this->dirs[] = $dir;
     }
 
     public function loadClass($class)
@@ -20,7 +20,8 @@ class ClassLoader
         foreach($this->dirs as $dir) {
             $file = $dir . '/' . $class  . '.php';
             if (is_readable($file)) {
-                require $file
+                require $file;
+
                 return;
             }
         }

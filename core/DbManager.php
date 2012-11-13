@@ -8,21 +8,21 @@ class DbManager
 
     protected $repositories = array();
 
-    public function connection($name, $params)
+    public function connect($name, $params)
     {
         $params = array_merge(array(
-            'dsn' => null,
-            'user' => '',
+            'dsn'      => null,
+            'user'     => '',
             'password' => '',
-            'options' => array(),
+            'options'  => array(),
         ), $params);
 
-        $con = new PDO{
+        $con = new PDO(
             $params['dsn'],
             $params['user'],
             $params['password'],
             $params['options']
-        };
+        );
 
         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
