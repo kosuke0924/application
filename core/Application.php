@@ -76,17 +76,17 @@ abstract class Application
 
     public function getViewDir()
     {
-        return $this->getRoodDir() . '/views';
+        return $this->getRootDir() . '/views';
     }
 
     public function getModeDir()
     {
-        return $this->getRoodDir() . '/models';
+        return $this->getRootDir() . '/models';
     }
 
     public function getWebDir()
     {
-        return $this->getRoodDir() . '/web';
+        return $this->getRootDir() . '/web';
     }
 
     protected $login_action = array();

@@ -6,7 +6,7 @@ class View
     protected $defaults;
     protected $layout_variables = array();
 
-    public function __construt($base_dir, $defaults = array())
+    public function __construct($base_dir, $defaults = array())
     {
         $this->base_dir = $base_dir;
         $this->defaults = $defaults;
@@ -31,7 +31,7 @@ class View
         $content = ob_get_clean();
 
         if ($_layout) {
-            $content = $this->render(
+            $content = $this->render($_layout,
                 array_merge($this->layout_variables, array(
                         '_content' => $content,
                     )
